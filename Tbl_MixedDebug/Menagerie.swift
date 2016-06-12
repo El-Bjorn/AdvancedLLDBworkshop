@@ -8,6 +8,14 @@
 
 import Foundation
 
-class Menagerie: NSObject {
-
+@objc public class Menagerie: NSObject {
+    private let animals = ["lion","tiger","bear","snake","turkey"]
+    
+    public func numberOfAnimals() -> Int {
+        return animals.count
+    }
+    
+    public func getAnimals() -> [String] {
+        return animals
+    }
 }
