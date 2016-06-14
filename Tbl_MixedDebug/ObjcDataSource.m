@@ -11,7 +11,6 @@
 
 NSString *const CELL_IDENT = @"ourCellIdent";
 
-
 @interface ObjcDataSource ()
 @property (nonatomic,strong) Menagerie *ourMenagerie;
 @end
@@ -23,6 +22,8 @@ NSString *const CELL_IDENT = @"ourCellIdent";
     self = [super init];
     if (self){
         self.ourMenagerie = [[Menagerie alloc] init];
+        //self.ourMenagerie.menagerie = @[@"ant",@"grass-hopper",@"beetle"]; // app runs fine
+        //self.ourMenagerie.menagerie = @[@"ant",@"grass-hopper",@"beetle",@5]; // xcode think its ok, but crashes
     }
     return self;
 }
@@ -36,9 +37,10 @@ NSString *const CELL_IDENT = @"ourCellIdent";
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENT forIndexPath:indexPath];
-    NSArray *critters = [self.ourMenagerie getAnimals];
-    cell.textLabel.text = critters[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENT forIndexPath:indexPath]; // get a cell
+    // set the animal
+    NSString *cellAnimal = [self.ourMenagerie getAnimalAtIndex:indexPath.row];
+    cell.textLabel.text = cellAnimal;
     
     return cell;
 }

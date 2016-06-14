@@ -9,13 +9,27 @@
 import Foundation
 
 @objc public class Menagerie: NSObject {
-    private let animals = ["lion","tiger","bear","snake","turkey"]
+    public var possibleAnimals = ["lion","tiger","bear","snake","turkey"]
+    public var menagerie = [String]()
     
-    public func numberOfAnimals() -> Int {
-        return animals.count
+    override init () {
+        let menageSize = 4
+        var newAnimal:String
+        // Show changing variable values using 'expr'
+        //    BEWARE OF VALUES IN REGISTERS! (they will appear to change, but won't)
+        for _ in 1...menageSize {
+            let randomIndex = Int(arc4random_uniform(UInt32(possibleAnimals.count)))
+            newAnimal = possibleAnimals[randomIndex]
+            print("new animal= \(newAnimal)")
+            menagerie.append(newAnimal)
+        }
     }
     
-    public func getAnimals() -> [String] {
-        return animals
+    public func numberOfAnimals() -> Int {
+        return menagerie.count
+    }
+    
+    public func getAnimalAtIndex(index:Int) -> String {
+        return menagerie[index]
     }
 }
