@@ -12,8 +12,8 @@ import Foundation
     public var possibleAnimals = ["lion","tiger","bear","snake","turkey"]
     public var menagerie = [String]()
     
-    override init () {
-        let menageSize = 4
+    convenience init(menageSize:Int) {
+        self.init()
         var newAnimal:String
         // Show changing variable values using 'expr'
         //    BEWARE OF VALUES IN REGISTERS! (they will appear to change, but won't)
@@ -23,6 +23,7 @@ import Foundation
             print("new animal= \(newAnimal)")
             menagerie.append(newAnimal)
         }
+
     }
     
     public func numberOfAnimals() -> Int {
