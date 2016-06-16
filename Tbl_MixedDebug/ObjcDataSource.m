@@ -39,7 +39,12 @@ NSString *const CELL_IDENT = @"ourCellIdent";
 }
 
 // Real simple stuff that makes sense when you disassemble it
-// break at a=3 and do 'di -p' (results are recognizeable)
+// break at a=3 and do 'di -p' / 'di' / 'di -m ' (results are recognizeable)
+//
+// watchpoint example: stop at declaration line: 'watch set var c' and continue,
+//      also note what happens when var goes out of scope('watch delete')
+// This is also a good place to run 'frame variable' to see all the variables in scope
+
 -(void) demoSimpleStuff {
     int a,b,c;
     a = 3;
@@ -61,6 +66,7 @@ NSString *const CELL_IDENT = @"ourCellIdent";
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENT forIndexPath:indexPath]; // get a cell
+    
     // set the animal
     NSString *cellAnimal = [self.ourMenagerie getAnimalAtIndex:indexPath.row];
     cell.textLabel.text = cellAnimal;

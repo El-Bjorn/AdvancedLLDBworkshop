@@ -15,27 +15,16 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // setup table delegates
         tableView.delegate = self
+        
+        // register our cell id
+        print("CELL_IDENT= \(CELL_IDENT)") // Swift sees the const NSString 'CELL_IDENT' as a 'let' String constant
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CELL_IDENT)
+        
+        // create the objective-C data source
         objDS = ObjcDataSource()
         tableView.dataSource = objDS
-      
-        // register our cell id
-        
-        //[tableView registerClass(UITableViewCell.self, forCellReuseIdentifier: CELL_IDENT)]
-        print("CELL_IDENT= \(CELL_IDENT)")
-        
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
