@@ -9,7 +9,9 @@
 #import "ObjcDataSource.h"
 #import "Tbl_MixedDebug-Swift.h"
 
-NSString *const CELL_IDENT = @"ourCellIdent";
+//NSString *const CELL_IDENT = @"ourCellIdent";
+NSString *CELL_IDENT = @"ourCellIdent";
+
 
 @interface ObjcDataSource ()
 @property (nonatomic,strong) Menagerie *ourMenagerie;
@@ -22,18 +24,14 @@ NSString *const CELL_IDENT = @"ourCellIdent";
 
 -(instancetype) init {
     self = [super init];
+    int menagerieSize = arc4random_uniform(MAX_MENAGE_SIZE)+3;
+
     if (self){
-        // demonstrate using 'expr' to change menagerieSize
-        int menagerieSize = arc4random_uniform(MAX_MENAGE_SIZE)+3;
         NSLog(@"creating menagerie of size: %d",menagerieSize);
         self.ourMenagerie = [[Menagerie alloc] initWithMenageSize:menagerieSize];
         
-        // demonstrate enabling each of these to illustrate the difference between Swift's notion of an Array and Objective-C's
-        //self.ourMenagerie.menagerie = @[@"ant",@"grass-hopper",@"beetle"]; // app runs fine
-        //self.ourMenagerie.menagerie = @[@"ant",@"grass-hopper",@"beetle",@5]; // xcode think its ok, but crashes
     }
-    // demostrate 'di'
-    [self demoSimpleStuff];
+    [self simpleStuff];
     
     return self;
 }
@@ -45,11 +43,13 @@ NSString *const CELL_IDENT = @"ourCellIdent";
 //      also note what happens when var goes out of scope('watch delete')
 // This is also a good place to run 'frame variable' to see all the variables in scope
 
--(void) demoSimpleStuff {
+-(void) simpleStuff {
     int a,b,c;
     a = 3;
     b = 7;
     c = a + b;
+    
+    CELL_IDENT = @"Pickes";
     
     printf("sum of a+b+c = %d\n",(a+b+c)); // stop here and do 'di -l' to show one line HHL turns into many instructions
     

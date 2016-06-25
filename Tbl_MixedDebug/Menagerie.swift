@@ -15,6 +15,7 @@ import Foundation
     convenience init(menageSize:Int) {
         self.init()
         var newAnimal:String
+        testFunction()
         // Show changing variable values using 'expr'
         //    BEWARE OF VALUES IN REGISTERS! (they will appear to change, but won't)
         for _ in 1...menageSize {
@@ -33,4 +34,11 @@ import Foundation
     public func getAnimalAtIndex(index:Int) -> String {
         return menagerie[index]
     }
+}
+
+func testFunction() {
+    let x = 5
+    var y = 10
+    y += x;
+    print("x+y=\(y)");
 }

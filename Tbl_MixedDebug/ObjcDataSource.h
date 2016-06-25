@@ -7,7 +7,9 @@
 //
 #import <UIKit/UIKit.h>
 
-extern NSString *const CELL_IDENT;
+extern NSString *CELL_IDENT;
+//extern NSString *const CELL_IDENT;
+
 
 @interface ObjcDataSource : NSObject <UITableViewDataSource>
 

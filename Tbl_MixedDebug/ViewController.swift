@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
-    var objDS:ObjcDataSource = ObjcDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CELL_IDENT)
         
         // create the objective-C data source
-        objDS = ObjcDataSource()
-        tableView.dataSource = objDS
+        tableView.dataSource = ObjcDataSource()
     }
 
 }
